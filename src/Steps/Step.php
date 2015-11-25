@@ -4,6 +4,7 @@ namespace SilverStripe\Cow\Steps;
 
 use Exception;
 use SilverStripe\Cow\Commands\Command;
+use Symfony\Component\Console\Helper\DialogHelper;
 use Symfony\Component\Console\Helper\ProcessHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -42,9 +43,17 @@ abstract class Step
      *
      * @return ProcessHelper
      */
-    protected function getProcessHelper()
+    public function getProcessHelper()
     {
-        return  $this->command->getHelper('process');
+        return $this->command->getHelper('process');
+    }
+    
+    /**
+     * @return DialogHelper
+     */
+    public function getDialogHelper()
+    {
+        return $this->command->getHelper('dialog');
     }
 
     /**
